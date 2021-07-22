@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 
 const userRoutes = require('./routes/user.route')
 const authRoute = require('./routes/auth.route')
+const authMiddleware = require('./middlewares/auth.middleware')
 
 const app = express()
 const port = 3000;
@@ -14,7 +15,7 @@ app.set('views', './views')
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(cookieParser());
+app.use(cookieParser('asdadbhasdb02asd'));
 
 app.use(express.static('public'));
 //Routes
@@ -28,7 +29,7 @@ app.get('/', (req, res) =>
 //     res.send('abc')
 // })
 
-app.use('/users',userRoutes);
+app.use('/users',authMiddleware.requireAuth,userRoutes);
 app.use('/auth',authRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`))
