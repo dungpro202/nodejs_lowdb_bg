@@ -1,26 +1,6 @@
 {
   "users": [
     {
-      "name": "anh dung",
-      "id": "sgvpdRp03"
-    },
-    {
-      "name": "anh duc",
-      "id": "_Wk4Cz2Md"
-    },
-    {
-      "name": "asd",
-      "id": "F6dTA37pS"
-    },
-    {
-      "name": "ere",
-      "id": "tOZ7FzJNw"
-    },
-    {
-      "name": "sql1",
-      "id": "zU--dBPnG"
-    },
-    {
       "name": "UUU",
       "phone": "03772765415",
       "id": "KjSE3ZyQL"
@@ -28,7 +8,9 @@
     {
       "name": "asdsd2",
       "phone": "123",
-      "id": "Tt2ruok0-"
+      "id": "Tt2ruok0-",
+      "email": "produng1508@gmail.com",
+      "password": "123456"
     },
     {
       "name": "UUU",
