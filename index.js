@@ -7,7 +7,10 @@ const cookieParser = require('cookie-parser')
 const userRoutes = require('./routes/user.route')
 const authRoute = require('./routes/auth.route')
 const productRoute = require('./routes/product.route')
+const cartRoute = require('./routes/cart.route')
+
 const authMiddleware = require('./middlewares/auth.middleware')
+const sessionMiddleware = require('./middlewares/session.middleware');
 
 const app = express()
 const port = 3000;
@@ -20,6 +23,8 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 // app.use(cookieParser('asdadbhasdb02asd'));
 app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(sessionMiddleware);
+
 
 app.use(express.static('public'));
 //Routes
@@ -33,8 +38,9 @@ app.get('/', (req, res) =>
 //     res.send('abc')
 // })
 
-app.use('/users',authMiddleware.requireAuth,userRoutes);
-app.use('/auth',authRoute);
-app.use('/products',productRoute);
+app.use('/users', authMiddleware.requireAuth, userRoutes);
+app.use('/auth', authRoute);
+app.use('/products', productRoute);
+app.use('/cart', cartRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`))

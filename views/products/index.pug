@@ -36,6 +36,8 @@ block content
                             div(class='card-footer')
                                 span(class='left')= product.price
                                 span VND
+                                br
+                            a.btn.btn-primary(href='/cart/add/' + product.id) Add to Cart
         nav(aria-label='...')
             ul.pagination
                     li.page-item.disabled

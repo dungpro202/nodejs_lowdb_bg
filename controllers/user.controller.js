@@ -25,7 +25,7 @@ module.exports.create = (req, res) => {
 
 module.exports.get = (req, res) => {
     // let id = parseInt(req.params.id);
-    let id = req.params.userId;
+    let id = req.params.id;
 
     let user = db.get('users').find({ id: id }).value();
     res.render('users/view', {
@@ -35,7 +35,10 @@ module.exports.get = (req, res) => {
 
 module.exports.portCreate = (req, res) => {
     req.body.id = shortid.generate();
+    req.body.avatar = req.file.path.split('\\').slice(1).join('/');
     
+    console.log( req.body.avatar)
+
     console.log(res.locals)
 
     db.get('users').push(req.body).write();
