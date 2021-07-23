@@ -1,7 +1,7 @@
 const db=require('../db');
 
 module.exports.requireAuth =(req, res, next)=>{
-    console.log(req.cookies)
+    // console.log(req.cookies)
     if(!req.signedCookies.userID){
         res.redirect('/auth/login')
         return;

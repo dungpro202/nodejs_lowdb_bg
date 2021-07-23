@@ -1,0 +1,50 @@
+extends ../layouts/common
+
+block content
+
+    section(class='section')
+        h1(class='section-heading') Danh Sach San Pham
+            .d-flex.align-items-center.justify-content-space-between
+                a.btn.btn-primary(href="/products/create") New Product
+                form(action="/products/search",method="GET",class="d-flex mb-0")
+                    input(type="text",name="q",class="form-control")
+                    button(class="btn btn-primary ") Search
+        .d-flex.align-items-center            
+            nav(aria-label='...')
+                ul.pagination
+                        li.page-item.disabled
+                            a.page-link(href='#', tabindex='-1', aria-disabled='true') Previous
+                        each _, i in Array(sl)
+                            li.page-item
+                                a.page-link(href='/products?page='+ (i+1))= i+1 
+                        li.page-item
+                            a.page-link(href='/products?page='+(page+1)) Next
+        div(class='row')
+            each product in products
+                div(class='col-lg-3 col-md-4 mb-r')
+                    div(class='card text-center card-cascade narrower')
+                        div(class='view overlay hm-white-slight z-depth-1')
+                            img(src=product.image, class='img-fluid', alt=product.name)
+                            a(href='#/')
+                                div(class='mask waves-light waves-effect waves-light')
+                        div(class='card-body')
+                            h4(class='card-title')
+                                strong
+                                    a(href='#/')= product.name
+                            p(class='card-text')
+                                product.description
+                            div(class='card-footer')
+                                span(class='left')= product.price
+                                span VND
+        nav(aria-label='...')
+            ul.pagination
+                    li.page-item.disabled
+                        a.page-link(href='#', tabindex='-1', aria-disabled='true') Previous
+                    each _, i in Array(sl)
+                        li.page-item
+                            a.page-link(href='/products?page='+ (i+1))= i+1 
+                    li.page-item
+                        a.page-link(href='#') Next
+
+
+                               
